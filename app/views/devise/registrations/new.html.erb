@@ -8,6 +8,20 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <h5 class="mt-2">Choose your role:</h5>
+  <p>(remember it couldn't be changed afterwards)</p>
+
+  <div class="field">
+    <div>
+      <%= radio_button_tag(:role, "user", required: 'required') %>
+      <%= label_tag(:role_user, "I want to be an User") %>
+    </div>
+    <div>
+      <%= radio_button_tag(:role, "admin") %>
+      <%= label_tag(:role_admin, "I want to be an Admin") %>
+    </div>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -21,7 +35,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-2">
     <%= f.submit "Sign up", class: "btn btn-outline-primary" %>
     <%= render "devise/shared/links" %>
   </div>

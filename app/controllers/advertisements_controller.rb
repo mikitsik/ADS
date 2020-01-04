@@ -25,7 +25,7 @@ class AdvertisementsController < ApplicationController
   # POST /advertisements
   # POST /advertisements.json
   def create
-    @advertisement = Advertisement.new(advertisement_params)
+    @advertisement = current_user.advertisements.new(advertisement_params)
 
     respond_to do |format|
       if @advertisement.save
