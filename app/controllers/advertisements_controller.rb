@@ -5,7 +5,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements
   # GET /advertisements.json
   def index
-    @advertisements = Advertisement.all
+    redirect_to root_path
   end
 
   # GET /advertisements/1

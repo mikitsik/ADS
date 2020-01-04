@@ -1,17 +1,24 @@
-<div class="text-center">
-  <%- if current_user %>
-    <%= link_to destroy_user_session_path, method: :delete do %>
-      <%= content_tag :span, "Logout", class: "btn btn-outline-danger" %>
-    <% end %>
-    <%= link_to edit_user_registration_path do %>
-      <%= content_tag :span, "Edit User", class: "btn btn-outline-secondary" %>
-    <% end %>
-  <%- else %>
-    <%= link_to new_user_session_path do %>
-      <%= content_tag :span, "Login", class: "btn btn-outline-primary" %>
-    <% end %>
-    <%= link_to new_user_registration_path do %>
-      <%= content_tag :span, "Sign up", class: "btn btn-outline-primary" %>
+<%- if current_user %>
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    <%= content_tag :span, "Logout", class: "btn btn-outline-danger" %>
+  <% end %>
+  <%= link_to edit_user_registration_path do %>
+    <%= content_tag :span, "Edit User", class: "btn btn-outline-secondary" %>
+  <% end %>
+<%- else %>
+  <%= link_to new_user_session_path do %>
+    <%= content_tag :span, "Login", class: "btn btn-outline-primary" %>
+  <% end %>
+  <%= link_to new_user_registration_path do %>
+    <%= content_tag :span, "Sign up", class: "btn btn-outline-primary" %>
+  <% end %>
+<% end %>
+
+<div class="mt-2">
+  <% if can? :create, Advertisement %>
+    <%= link_to new_advertisement_path do %>
+      <%= content_tag :span, "Add new Ad", class: "btn btn-outline-success" %>
     <% end %>
   <% end %>
 </div>
+
