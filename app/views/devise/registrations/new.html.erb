@@ -9,6 +9,20 @@
   </div>
 
   <div class="field">
+    <h4>Who do you want to be?</h4>
+    <h5>Choose your role:</h5>
+    <p>(notice, you couldn't change it aferwards)</p>
+    <div>
+      <%= radio_button_tag(:role, "user", required: 'required') %>
+      <%= label_tag(:role_user, "I want to be an User") %>
+    </div>
+    <div>
+      <%= radio_button_tag(:role, "admin") %>
+      <%= label_tag(:role_admin, "I want to be an Admin") %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
