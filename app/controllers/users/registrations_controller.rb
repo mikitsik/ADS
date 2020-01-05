@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
 
-    resource.update({ role: params['role'] })
+    resource.update(role: params['role'])
   end
 
   protected

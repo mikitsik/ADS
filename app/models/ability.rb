@@ -6,11 +6,14 @@ class Ability
   def initialize(user)
 
     user ||= User.new.tap {|user| user.role = 'guest'}
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
+
+    if user.guest?
+      can :read, :all
+    elsif user.user?
+      can :manage, :all
+    elsif user.admin?
+      can :destroy, :all
+    end
 
     # Define abilities for the passed in user here. For example:
     #

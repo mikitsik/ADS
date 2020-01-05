@@ -1,4 +1,5 @@
 class AdvertisementsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
 
   # GET /advertisements
@@ -24,7 +25,7 @@ class AdvertisementsController < ApplicationController
   # POST /advertisements
   # POST /advertisements.json
   def create
-    @advertisement = Advertisement.new(advertisement_params)
+    @advertisement = current_user.advertisements.new(advertisement_params)
 
     respond_to do |format|
       if @advertisement.save
@@ -56,7 +57,7 @@ class AdvertisementsController < ApplicationController
   def destroy
     @advertisement.destroy
     respond_to do |format|
-      format.html { redirect_to advertisements_url, notice: 'Advertisement was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Advertisement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

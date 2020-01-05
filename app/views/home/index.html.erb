@@ -15,3 +15,32 @@
     <% end %>
   <% end %>
 </div>
+
+<% if can? :create, Advertisement %>
+  <%= link_to new_advertisement_path do %>
+    <%= content_tag :span, "Create new Advertisement", class: "btn btn-outline-success mt-1" %>
+  <% end %>
+<% end %>
+
+  <% @advertisements.each do |advertisement| %>
+    <div class="border border-primary rounded m-2 p-2">
+      <h3><%= advertisement.title %></h3>
+      <p><%= advertisement.content %></p>
+      <p>Author: <%= advertisement.user.email %></p>
+      <% if can? :read, advertisement %>
+        <%= link_to advertisement do %>
+          <%= content_tag :span, "Show", class: "btn btn-outline-success mt-1" %>
+        <% end %>
+      <% end %>  
+      <% if can? :update, advertisement %>
+        <%= link_to edit_advertisement_path(advertisement) do %>
+          <%= content_tag :span, "Edit", class: "btn btn-outline-secondary mt-1" %>
+        <% end %>
+      <% end %>
+      <% if can? :destroy, advertisement %>
+        <%= link_to advertisement, confirm: 'Are you sure?', method: :delete do %>
+          <%= content_tag :span, "Delete", class: "btn btn-outline-danger mt-1" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
