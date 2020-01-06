@@ -9,6 +9,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "Name", required: 'required' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname, autocomplete: "surname", required: 'required' %>
+  </div>
+
+  <div class="field">
     <h4>Who do you want to be?</h4>
     <h5>Choose your role:</h5>
     <p>(notice, you couldn't change it aferwards)</p>

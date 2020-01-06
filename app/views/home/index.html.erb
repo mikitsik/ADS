@@ -26,7 +26,7 @@
     <div class="border border-primary rounded m-2 p-2">
       <h3><%= advertisement.title %></h3>
       <p><%= advertisement.content %></p>
-      <p>Author: <%= advertisement.user.email %></p>
+      <p>Author: <%= advertisement.user.name %> <%= advertisement.user.surname %></p>
       <% if can? :read, advertisement %>
         <%= link_to advertisement do %>
           <%= content_tag :span, "Show", class: "btn btn-outline-success mt-1" %>

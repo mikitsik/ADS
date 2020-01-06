@@ -2,7 +2,7 @@
 
 <h3><%= @advertisement.title %></h3>
 <p><%= @advertisement.content %></p>
-<p>Author: <%= @advertisement.user.email %></p>
+<p>Author: <%= @advertisement.user.name %> <%= @advertisement.user.surname %></p>
 
 <% if can? :update, @advertisement %>
     <%= link_to edit_advertisement_path(@advertisement) do %>
