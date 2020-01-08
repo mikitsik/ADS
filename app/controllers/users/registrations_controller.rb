@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
 
-    resource.update(role: params['role'])
+    resource.update(role: params[:role])
   end
 
   protected
@@ -12,6 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :name, :surname])
 
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :surname, :email, :password, :current_password)}
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :surname, :email, :role, :password, :current_password)}
   end
 end

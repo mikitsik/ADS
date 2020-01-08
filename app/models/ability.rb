@@ -8,11 +8,12 @@ class Ability
     user ||= User.new.tap {|user| user.role = 'guest'}
 
     if user.guest?
-      can :read, :all
+      can :read, Advertisement
     elsif user.user?
-      can :manage, :all
+      can :manage, Advertisement, user_id: user.id
     elsif user.admin?
-      can :destroy, :all
+      can :destroy, Advertisement
+      can :manage, User
     end
 
     # Define abilities for the passed in user here. For example:
