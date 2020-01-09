@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @advertisement.title %></h3>
+<p><%= @advertisement.content %></p>
+<p>Author: <%= @advertisement.user.name %> <%= @advertisement.user.surname %></p>
+
+<% if can? :update, @advertisement %>
+    <%= link_to edit_advertisement_path(@advertisement) do %>
+      <%= content_tag :span, "Edit", class: "btn btn-outline-success mt-1" %>
+    <% end %>
+  <% end %>
+<%= link_to 'Home page', advertisements_path %>
