@@ -7,5 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-  end 
+  end
+
+  namespace :users do
+    resources :ad_statuses, only: [:index ,:show]
+  end  
 end
