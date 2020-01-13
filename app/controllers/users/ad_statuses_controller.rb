@@ -1,11 +1,14 @@
 class Users::AdStatusesController < ApplicationController
-  # load_and_authorize_resource
 
   def index
     @advertisements = Advertisement.where(user_id: params[:user_id],
                                           state: params[:status])
   end
 
-  def show
+  def update
+    advertisement = Advertisement.find(params[:id])
+    advertisement.update(state: params[:status])
+
+    redirect_to users_ad_statuses_path(user_id: params[:user_id], status: params[:status])
   end
 end

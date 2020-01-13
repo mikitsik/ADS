@@ -3,21 +3,13 @@
     <h3><%= advertisement.title %></h3>
     <p><%= advertisement.content %></p>
     <p>Created at: <%= advertisement.created_at %></p>
-    <p>Status: <%= advertisement.state %></p>
-    <% if can? :read, advertisement %>
-      <%= link_to advertisement do %>
-        <%= content_tag :span, "Show", class: "btn btn-outline-success mt-1" %>
-      <% end %>
-    <% end %>  
-    <% if can? :update, advertisement %>
-      <%= link_to edit_advertisement_path(advertisement) do %>
-        <%= content_tag :span, "Edit", class: "btn btn-outline-secondary mt-1" %>
-      <% end %>
+    <p class="d-inline-block border border-primary rounded pl-2 pr-2">Status: <%= advertisement.state.upcase %></p>
+
+    <% if advertisement.draft? %>
+      <div><%= link_to users_ad_status_path(user_id: current_user, status: 'new', id: advertisement.id), method: :put do %>
+        <%= content_tag :span, 'Change to "NEW"', class: "btn btn-outline-success" %>
+      <% end %></div>
     <% end %>
-    <% if can? :destroy, advertisement %>
-      <%= link_to advertisement, confirm: 'Are you sure?', method: :delete do %>
-        <%= content_tag :span, "Delete", class: "btn btn-outline-danger mt-1" %>
-      <% end %>
-    <% end %>
+
   </div>
 <% end %>

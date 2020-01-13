@@ -10,7 +10,10 @@ class Ability
     if user.guest?
       can :read, Advertisement
     elsif user.user?
-      can :manage, Advertisement, user_id: user.id
+      can :manage, Advertisement, state: :draft, user_id: user.id
+      can [:read, :destroy], Advertisement, state: :new, user_id: user.id
+      can :destroy, Advertisement, state: :approved, user_id: user.id
+      can :destroy, Advertisement, state: :published, user_id: user.id
     elsif user.admin?
       can :destroy, Advertisement
       can :manage, User

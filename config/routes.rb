@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :ad_statuses, only: [:index ,:show]
+    resources :ad_statuses, only: [:index ,:update]
   end  
 end
