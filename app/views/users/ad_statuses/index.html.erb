@@ -10,6 +10,18 @@
         <%= content_tag :span, 'Change to "NEW"', class: "btn btn-outline-success" %>
       <% end %></div>
     <% end %>
+    <% if advertisement.rejected? || advertisement.archived?%>
+      <div><%= link_to users_ad_status_path(user_id: current_user, status: 'draft', id: advertisement.id), method: :put do %>
+        <%= content_tag :span, 'Change to "DRAFT"', class: "btn btn-outline-secondary" %>
+      <% end %></div>
+    <% end %>
+    <% if advertisement.approved? || advertisement.published? %>
+      <div><%= link_to advertisement, confirm: 'Are you sure?', method: :delete do %>
+        <%= content_tag :span, 'DELETE', class: "btn btn-outline-success" %>
+      <% end %></div>
+    <% end %>
+
+    <div><%= link_to 'Home page', advertisements_path %></div>
 
   </div>
 <% end %>

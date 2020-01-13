@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   AD_PER_PAGE = 5
 
   def index
-    @pages = Advertisement.count / AD_PER_PAGE
+    @pages = Advertisement.published.count / AD_PER_PAGE
     unless @pages.zero?
       @pages += 1
     end
@@ -13,7 +13,7 @@ class HomeController < ApplicationController
       @page -= 1
     end
 
-    @advertisements = Advertisement.offset(@page * AD_PER_PAGE).limit(AD_PER_PAGE)
+    @advertisements = Advertisement.published.offset(@page * AD_PER_PAGE).limit(AD_PER_PAGE)
   end
 
   private

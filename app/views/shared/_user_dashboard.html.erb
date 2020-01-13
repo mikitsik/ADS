@@ -12,16 +12,16 @@
          <%= link_to users_ad_statuses_path(user_id: current_user, status: 'new') do %>
            <%= content_tag :span, "New", class: "btn btn-outline-secondary" %>
          <% end %>
-         <%= link_to do %>
+         <%= link_to users_ad_statuses_path(user_id: current_user, status: 'rejected')do %>
            <%= content_tag :span, "Rejected", class: "btn btn-outline-secondary" %>
          <% end %>
-         <%= link_to do %>
+         <%= link_to users_ad_statuses_path(user_id: current_user, status: 'approved')do %>
            <%= content_tag :span, "Approved", class: "btn btn-outline-secondary" %>
          <% end %>
-         <%= link_to do %>
+         <%= link_to users_ad_statuses_path(user_id: current_user, status: 'published')do %>
            <%= content_tag :span, "Published", class: "btn btn-outline-secondary" %>
          <% end %>
-         <%= link_to do %>
+         <%= link_to users_ad_statuses_path(user_id: current_user, status: 'archived')do %>
            <%= content_tag :span, "Archived", class: "btn btn-outline-secondary" %>
          <% end %>
       </p>
