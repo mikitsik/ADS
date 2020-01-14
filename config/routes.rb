@@ -7,9 +7,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :ad_statuses, only: [:index ,:update]
   end
 
   namespace :users do
     resources :ad_statuses, only: [:index ,:update]
-  end  
+  end
 end

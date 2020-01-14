@@ -1,5 +1,5 @@
 class Users::AdStatusesController < ApplicationController
-
+  
   def index
     @advertisements = Advertisement.where(user_id: params[:user_id],
                                           state: params[:status])
