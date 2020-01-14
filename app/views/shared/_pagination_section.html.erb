@@ -1,9 +1,0 @@
-<% unless @pages.zero? %>
-  <h3>page: <%= @page + 1 %></h3>
-
-  <% @pages.times do |page| %>
-    <%= link_to root_path(page: page + 1) do %>
-      <%= content_tag :span, "#{page + 1}", class: "btn btn-outline-secondary" %>
-    <% end %>
-  <% end %>
-<% end %>

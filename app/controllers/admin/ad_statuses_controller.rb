@@ -1,7 +1,7 @@
 class Admin::AdStatusesController < ApplicationController
   
   def index
-    @advertisements = Advertisement.where(state: :new)
+    @advertisements = Advertisement.where(state: :new).page(params[:page])
   end
 
   def update
