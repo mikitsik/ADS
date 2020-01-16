@@ -2,7 +2,18 @@
   <div class="border border-primary rounded m-2 p-2">
     <h3><%= advertisement.title %></h3>
     <p><%= advertisement.content %></p>
-    <p>Created at: <%= advertisement.created_at %></p>
+    <div class="d-flex justify-content-center">
+      <% advertisement.images.each do |image| %>
+        <div>
+          <span class="m-1"><%= link_to image_tag(image.variant(resize: "300x300")), image, target: :blank %></span>
+          <% if advertisement.draft? %>
+            <div><%= link_to users_ad_image_path(image), method: :delete do %><%= content_tag :span, 'delete image', class: "btn btn-outline-danger mt-2" %>
+           <% end %></div>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <p class="mt-2">Created at: <%= advertisement.created_at %></p>
     <p class="d-inline-block border border-primary rounded pl-2 pr-2">Status: <%= advertisement.state.upcase %></p>
 
     <% if advertisement.draft? %>

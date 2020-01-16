@@ -2,6 +2,13 @@
 
 <h3><%= @advertisement.title %></h3>
 <p><%= @advertisement.content %></p>
+<div>
+  <% @advertisement.images.each do |image| %>
+    <%= image_tag image.variant(resize: "300x300") %>
+  <% end %>
+</div>
+<p class="mt-2"><%= @advertisement.state.created_at %></p>
+<p><%= @advertisement.state.upcase %></p>
 <p>Author: <%= @advertisement.user.name %> <%= @advertisement.user.surname %></p>
 
 <% if can? :update, @advertisement %>

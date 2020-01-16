@@ -31,6 +31,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'aasm'
 gem 'kaminari'
+gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

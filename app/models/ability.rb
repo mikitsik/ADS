@@ -8,8 +8,9 @@ class Ability
     user ||= User.new.tap {|user| user.role = 'guest'}
 
     if user.guest?
-      can :read, Advertisement
+      can :read, Advertisement, state: :published
     elsif user.user?
+      can [:read, :create], Advertisement, user_id: user.id
       can :manage, Advertisement, state: :draft, user_id: user.id
       can [:read, :destroy], Advertisement, state: :new, user_id: user.id
       can :destroy, Advertisement, state: :approved, user_id: user.id
