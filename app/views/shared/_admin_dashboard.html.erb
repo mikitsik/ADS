@@ -1,0 +1,11 @@
+<% if can? :manage, User %>
+  <%= link_to admin_users_path do %>
+    <%= content_tag :span, "Show all Users", class: "btn btn-outline-secondary mt-1" %>
+  <% end %>
+  <%= link_to new_admin_user_path do %>
+    <%= content_tag :span, "Create new User", class: "btn btn-outline-success mt-1" %>
+  <% end %>
+  <div class="mt-1"><%= link_to admin_ad_statuses_path do %>
+         <%= content_tag :span, "Show NEW Advertisements", class: "btn btn-outline-secondary" %>
+       <% end %></div>
+<% end %>

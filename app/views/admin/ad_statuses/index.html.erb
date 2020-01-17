@@ -1,0 +1,26 @@
+<% @advertisements.each do |advertisement| %>
+  <div class="border border-primary rounded m-2 p-2">
+    <h3><%= advertisement.title %></h3>
+    <p><%= advertisement.content %></p>
+    <div>
+      <% advertisement.images.each do |image| %>
+        <%= link_to image_tag(image.variant(resize: "300x300")), image, target: :blank %>
+      <% end %>
+    </div>
+    <p class="mt-2">Created at: <%= advertisement.created_at %></p>
+    <p class="d-inline-block border border-primary rounded pl-2 pr-2">Status: <%= advertisement.state.upcase %></p>
+
+    <div>
+      <%= link_to admin_ad_status_path(status: 'approved', id: advertisement.id), method: :put do %>
+      <%= content_tag :span, 'APPROVE', class: "btn btn-outline-success" %>
+      <% end %>
+      <%= link_to admin_ad_status_path(status: 'rejected', id: advertisement.id), method: :put do %>
+        <%= content_tag :span, 'REJECT', class: "btn btn-outline-danger" %>
+      <% end %>        
+    </div>
+
+    <div><%= link_to 'Home page', root_path %></div>
+
+  </div>
+<% end %>
+<%= paginate @advertisements %>

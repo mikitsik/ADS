@@ -1,8 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-    @advertisements = Advertisement.all
-    
-    render 'home/index'
+    @advertisements = Advertisement.published.page(params[:page])
   end
 end

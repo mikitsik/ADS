@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :allow_without_password, only: [:update]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
