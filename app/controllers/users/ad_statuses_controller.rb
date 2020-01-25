@@ -2,7 +2,7 @@ class Users::AdStatusesController < ApplicationController
   
   def index
     @advertisements = Advertisement.where(user_id: params[:user_id],
-                                          state: params[:status]).page(params[:page])
+                                          state: params[:status]).includes([:images_attachments]).with_attached_images.page(params[:page])
   end
 
   def update
