@@ -40,4 +40,9 @@ class Advertisement < ApplicationRecord
   def user_user?
     current_user.role == 'user'
   end
+
+  def self.search(query)
+    sanitized = sanitize_sql_array(["to_tsquery('english', ?)", query])
+    Advertisement.where("tsv @@ #{sanitized}")
+  end
 end
